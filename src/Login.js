@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Container } from 'react-bootstrap';
-import React from 'react'
+import React from "react"
+import { Container } from "react-bootstrap"
 
 const client_id='1f39da23cbd74e79bc7cd6d4e31cd7f0'
 const redirect_uri='http://localhost:3000/callback'
@@ -17,9 +15,14 @@ url += '&scope=' + encodeURIComponent(scope);
 const AUTH_URL = url;
 
 export default function Login() {
-    return <Container className='d-flex justify-content-center align-items-center' style={{minHeight: '100vh'}}>
-    <a className='btn btn-success btn-lrg' href={AUTH_URL}>Login with Spotify</a>
-    </Container>
-
-
+    return (
+        <Container
+        className="d-flex justify-content-center align-items-center"
+        style={{ minHeight: "100vh" }}
+        >
+        <a className="btn btn-success btn-lg" href={AUTH_URL}>
+            Login With Spotify
+        </a>
+        </Container>
+    )
 }
