@@ -85,7 +85,7 @@ const [loudness, setLoudness] = useState("");
 
   const bpm = Math.floor(song_tempo)
   const time = setTime(song_duration)
-  const popularityPercent = (popularity).toFixed(0)
+  const popularityPercent = Math.floor(popularity)
   const danceabilityPercent = (danceability*100).toFixed(0)
   const energyPercent = (energy*100).toFixed(0)
   const acousticnessPercent = (acousticness*100).toFixed(0)
