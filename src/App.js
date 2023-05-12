@@ -18,6 +18,12 @@ const [song_duration, setSongDuration] = useState("");
 const [song_tempo, setSongTempo] = useState("");
 const [external_link, setExternalLink] = useState("");
 
+const [danceability, setDanceability] = useState("");
+const [energy, setEnergy] = useState("");
+const [acousticness, setAcousticness] = useState("");
+const [vibeability, setVibeability] = useState("");
+const [loudness, setLoudness] = useState("");
+
   useEffect(() => {
     var authParams = {
       method: 'POST',
@@ -40,12 +46,6 @@ const [external_link, setExternalLink] = useState("");
       }
     }
 
-    // function setTime(ms) {
-    //   var mins = Math.floor(ms / 60000);
-    //   var secs = ((ms % 60000) / 1000).toFixed(0);
-    //   return (secs == 60 ? (mins+1) + ":00" : mins + ":" + (secs < 10 ? "0" : "") + secs);
-    // }
-
     var track_id = await fetch('https://api.spotify.com/v1/search?q=' + search_input + '&type=track' , trackParams)
     .then(response => response.json())
     .then(data => {return data.tracks.items[0].id})
@@ -67,9 +67,25 @@ const [external_link, setExternalLink] = useState("");
       console.log(data)
       setSongDuration(data.duration_ms)
       setSongTempo(data.tempo)
-    
+      setDanceability(data.danceability)
+      setEnergy(data.energy)
+      setAcousticness(data.acousticness)
+      setVibeability(data.valence)
+      setLoudness(data.loudness)
     })
   }
+
+  function setTime(ms) {
+    var mins = Math.floor(ms / 60000);
+    var secs = ((ms % 60000) / 1000).toFixed(0);
+    return (secs == 60 ? (mins+1) + ":00" : mins + ":" + (secs < 10 ? "0" : "") + secs);
+  }
+
+  const time = setTime(song_duration)
+  const danceabilityPercent = (danceability*100).toFixed(0)
+  const energyPercent = (energy*100).toFixed(0)
+  const acousticnessPercent = (acousticness*100).toFixed(0)
+  const vibeabilityPercent = (vibeability*100).toFixed(0)
 
   return (
   <div className="App" class="text-white">
@@ -94,19 +110,28 @@ const [external_link, setExternalLink] = useState("");
     </Container>
     <Container>
     <Row className="mx-2 row row-cols-4">
-        <Card className="d-flex m-2 align-items-center">
+        <Card className="d-flex mt-2 align-items-center">
           <Card.Img class="img-thumbnail"  src={album_image}/>
         </Card>
-        <Card className="d-flex m-2 w-50">
+        <Card className="d-flex mt-2 w-50">
           <Card.Body>
             <h5 class="text-black fw-bold">Song: {song_name}</h5>
             <p class="text-muted">Artist: {artist_name}</p>
             <p class="text-muted">Album: {album_name}</p>
-            <p class="text-muted">Duration: {song_duration} milliseconds</p>
+            <p class="text-muted">Duration: {time}</p>
             <p class="text-muted">Tempo: {song_tempo}</p>
             <a type="button" class="btn btn-success" href={external_link}>Listen on Spotify</a>
           </Card.Body>
         </Card>
+        <Card className="d-flex mt-2">
+        <Card.Body>
+          <p class="text-muted">Danceability: {danceabilityPercent}%</p>
+          <p class="text-muted">Energy: {energyPercent}%</p>
+          <p class="text-muted">Acousticness: {acousticnessPercent}%</p>
+          <p class="text-muted">Positivity: {vibeabilityPercent}% </p>
+          <p class="text-muted">Loudness: {loudness} dB</p>
+        </Card.Body>
+      </Card>
       </Row>
     </Container>
   </div>
