@@ -94,7 +94,7 @@ const [loudness, setLoudness] = useState("");
     <h1>Song Analyzer</h1>
   </div>
     <Container>
-      <InputGroup className="m-3" size="lg">
+      <InputGroup className="my-3" size="lg">
               <FormControl  
                 type="input" 
                 placeholder="Search for Song" 
