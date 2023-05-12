@@ -75,7 +75,7 @@ const [external_link, setExternalLink] = useState("");
   <div className="App" class="text-white">
 
   <div className="App-header" class="d-flex p-3 justify-content-center">
-    <h1 >Spotify Song Search</h1>
+    <h1>Song Analyzer</h1>
   </div>
     <Container>
       <InputGroup className="m-3" size="lg">
@@ -97,12 +97,12 @@ const [external_link, setExternalLink] = useState("");
         <Card className="d-flex m-2 align-items-center">
           <Card.Img class="img-thumbnail"  src={album_image}/>
         </Card>
-        <Card className="d-flex m-2">
+        <Card className="d-flex m-2 w-50">
           <Card.Body>
-            <h5 class="text-black">Song: {song_name}</h5>
+            <h5 class="text-black fw-bold">Song: {song_name}</h5>
             <p class="text-muted">Artist: {artist_name}</p>
             <p class="text-muted">Album: {album_name}</p>
-            <p class="text-muted">Duration: {song_duration}</p>
+            <p class="text-muted">Duration: {song_duration} milliseconds</p>
             <p class="text-muted">Tempo: {song_tempo}</p>
             <a type="button" class="btn btn-success" href={external_link}>Listen on Spotify</a>
           </Card.Body>
