@@ -1,10 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css"
-import Login from "./Login"
-import Dashboard from "./Dashboard"
-import { Container, InputGroup, FormControl, Button, Row, Card, useAccordionButton } from "react-bootstrap"
+import { Container, InputGroup, FormControl, Button, Row, Card } from "react-bootstrap"
 import { useState, useEffect } from "react"
 import SpotifyWebApi from 'spotify-web-api-js';
-import axios from "axios"
+
 
 const spotifyApi = new SpotifyWebApi();
 
