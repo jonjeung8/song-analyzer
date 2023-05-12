@@ -81,6 +81,7 @@ const [loudness, setLoudness] = useState("");
     return (secs == 60 ? (mins+1) + ":00" : mins + ":" + (secs < 10 ? "0" : "") + secs);
   }
 
+  const bpm = (song_tempo).toFixed(0)
   const time = setTime(song_duration)
   const danceabilityPercent = (danceability*100).toFixed(0)
   const energyPercent = (energy*100).toFixed(0)
@@ -117,19 +118,19 @@ const [loudness, setLoudness] = useState("");
           <Card.Body>
             <h5 class="text-black fw-bold">Song: {song_name}</h5>
             <p class="text-muted">Artist: {artist_name}</p>
-            <p class="text-muted">Album: {album_name}</p>
-            <p class="text-muted">Duration: {time}</p>
-            <p class="text-muted">Tempo: {song_tempo}</p>
+            <p class="text-black">Album: {album_name}</p>
+            <p class="text-black">Duration: {time}</p>
+            <p class="text-black">Tempo: {bpm} bpm</p>
             <a type="button" class="btn btn-success" href={external_link}>Listen on Spotify</a>
           </Card.Body>
         </Card>
         <Card className="d-flex mt-2">
         <Card.Body>
-          <p class="text-muted">Danceability: {danceabilityPercent}%</p>
-          <p class="text-muted">Energy: {energyPercent}%</p>
-          <p class="text-muted">Acousticness: {acousticnessPercent}%</p>
-          <p class="text-muted">Positivity: {vibeabilityPercent}% </p>
-          <p class="text-muted">Loudness: {loudness} dB</p>
+          <p class="text-black">Danceability: {danceabilityPercent}%</p>
+          <p class="text-black">Energy: {energyPercent}%</p>
+          <p class="text-black">Acousticness: {acousticnessPercent}%</p>
+          <p class="text-black">Positivity: {vibeabilityPercent}% </p>
+          <p class="text-black">Loudness: {loudness} dB</p>
         </Card.Body>
       </Card>
       </Row>
