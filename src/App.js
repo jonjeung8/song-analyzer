@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css"
-import { Container, InputGroup, FormControl, Button, Row, Card } from "react-bootstrap"
+import { Container, InputGroup, FormControl, Row, Card } from "react-bootstrap"
 import { useState, useEffect } from "react"
 import "./App.css"
 
@@ -17,7 +17,6 @@ const [album_name, setAlbumName] = useState("");
 const [song_duration, setSongDuration] = useState("");
 const [song_tempo, setSongTempo] = useState("");
 const [external_link, setExternalLink] = useState("");
-const [adjusted_time, setAdjustedTime] = useState("");
 
   useEffect(() => {
     var authParams = {
@@ -41,11 +40,11 @@ const [adjusted_time, setAdjustedTime] = useState("");
       }
     }
 
-    function setTime(ms) {
-      var mins = Math.floor(ms / 60000);
-      var secs = ((ms % 60000) / 1000).toFixed(0);
-      return (secs == 60 ? (mins+1) + ":00" : mins + ":" + (secs < 10 ? "0" : "") + secs);
-    }
+    // function setTime(ms) {
+    //   var mins = Math.floor(ms / 60000);
+    //   var secs = ((ms % 60000) / 1000).toFixed(0);
+    //   return (secs == 60 ? (mins+1) + ":00" : mins + ":" + (secs < 10 ? "0" : "") + secs);
+    // }
 
     var track_id = await fetch('https://api.spotify.com/v1/search?q=' + search_input + '&type=track' , trackParams)
     .then(response => response.json())
@@ -73,14 +72,14 @@ const [adjusted_time, setAdjustedTime] = useState("");
   }
 
   return (
-  <div className="App" class="bg-dark text-white">
+  <div className="App" class="text-white">
 
-  <div className="App-header">
+  <div className="App-header" class="d-flex p-3 justify-content-center">
     <h1 >Spotify Song Search</h1>
   </div>
     <Container>
-      <InputGroup className="mb-3" size="lg">
-              <FormControl 
+      <InputGroup className="m-3" size="lg">
+              <FormControl  
                 type="input" 
                 placeholder="Search for Song" 
                 onKeyDown={event => {
@@ -100,7 +99,7 @@ const [adjusted_time, setAdjustedTime] = useState("");
         </Card>
         <Card className="d-flex m-2">
           <Card.Body>
-            <h5 class="text-black">Title: {song_name}</h5>
+            <h5 class="text-black">Song: {song_name}</h5>
             <p class="text-muted">Artist: {artist_name}</p>
             <p class="text-muted">Album: {album_name}</p>
             <p class="text-muted">Duration: {song_duration}</p>

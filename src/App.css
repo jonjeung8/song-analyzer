@@ -1,0 +1,12 @@
+*{
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    letter-spacing: .1em;
+    background-color: rgb(33,37,41);
+}
