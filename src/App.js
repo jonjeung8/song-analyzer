@@ -18,6 +18,7 @@ const [song_duration, setSongDuration] = useState("");
 const [song_tempo, setSongTempo] = useState("");
 const [external_link, setExternalLink] = useState("");
 
+const [popularity, setPopularity] = useState("");
 const [danceability, setDanceability] = useState("");
 const [energy, setEnergy] = useState("");
 const [acousticness, setAcousticness] = useState("");
@@ -59,6 +60,7 @@ const [loudness, setLoudness] = useState("");
       setArtistName(data.artists[0].name)
       setAlbumName(data.album.name)
       setExternalLink(data.external_urls.spotify)
+      setPopularity(data.popularity)
 
     })
     var track_stats = await fetch('https://api.spotify.com/v1/audio-features/' + track_id , trackParams)
@@ -83,6 +85,7 @@ const [loudness, setLoudness] = useState("");
 
   const bpm = (song_tempo).toFixed(0)
   const time = setTime(song_duration)
+  const popularityPercent = (popularity*100).toFixed(0)
   const danceabilityPercent = (danceability*100).toFixed(0)
   const energyPercent = (energy*100).toFixed(0)
   const acousticnessPercent = (acousticness*100).toFixed(0)
@@ -126,6 +129,7 @@ const [loudness, setLoudness] = useState("");
         </Card>
         <Card className="d-flex mt-2">
         <Card.Body>
+          <p class="text-black">Popularity: {popularityPercent}%</p>
           <p class="text-black">Danceability: {danceabilityPercent}%</p>
           <p class="text-black">Energy: {energyPercent}%</p>
           <p class="text-black">Acousticness: {acousticnessPercent}%</p>
