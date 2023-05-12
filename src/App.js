@@ -1,10 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Container, InputGroup, FormControl, Button, Row, Card } from "react-bootstrap"
 import { useState, useEffect } from "react"
-import SpotifyWebApi from 'spotify-web-api-js';
-
-
-const spotifyApi = new SpotifyWebApi();
 
 const client_id='1f39da23cbd74e79bc7cd6d4e31cd7f0'
 const client_secret='def7a5faf70b4d3fbb5340689fb7d39d'
@@ -28,18 +24,6 @@ const [access_token, setAccessToken] = useState("");
     .then(response => response.json())
     .then(data => setAccessToken(data.access_token))
   }, [])
-
-  // async function search() {
-  //   console.log(searchInput)
-  //   var playlistParams = {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Authorization': 'Bearer '+ access_token
-  //     },
-  //     body: 'q=' + searchInput
-  //   }
-  // }
 
   return (
   <div className="App">
